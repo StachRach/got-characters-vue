@@ -1,7 +1,7 @@
 <template>
   <header class="container">
     <div class="header">
-      <p>Game of Throne Characters Showcase</p>
+      <p>Game of Thrones Characters Showcase</p>
     </div>
   </header>
 </template>

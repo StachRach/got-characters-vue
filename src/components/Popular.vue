@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Image from "../assets/square.png";
 import PopularItem from "./PopularItem.vue";
-import {ref} from "vue";
+// import { ref } from "vue";
 
 interface Character {
   id: number;
@@ -11,7 +11,7 @@ interface Character {
   tvShows: string[];
 }
 
-const data: [Character, Character, Character] = [
+const data: Character[] = [
   {
     id: 1,
     name: "Jon Snow",
@@ -35,12 +35,12 @@ const data: [Character, Character, Character] = [
   },
 ]
 
-const characters = ref(data)
+// const characters = ref(data)
 </script>
 
 <template>
   <div class="box">
-    <div v-for="c in characters">
+    <div v-for="c in data">
       <PopularItem
           :films=c.films
           :tv-shows=c.tvShows
