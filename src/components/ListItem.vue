@@ -27,6 +27,7 @@ const emit = defineEmits<{
 
 <style scoped>
 .block-child {
+	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
@@ -36,10 +37,10 @@ const emit = defineEmits<{
 	font-size: 15px;
 	margin: 0;
 	padding: 15px 15px 0 15px;
-	flex-basis: 30%;
 }
 
 .name {
-	flex-basis: 30%;
+	align-items: center;
+	flex-basis: 50%;
 }
 </style>

@@ -45,9 +45,14 @@ defineProps<{
 	border-radius: 10px;
 	border-color: rgba(0, 0, 0, 0.2);
 	color: #36013f;
-	width: 49%;
+	width: 60%;
 	padding-right: 30px;
 	margin-bottom: 30px;
+}
+
+.block h3 {
+	font-size: 21px;
+	padding-top: 10px;
 }
 
 .block li {
@@ -66,6 +71,5 @@ defineProps<{
 .block-child p {
 	font-size: 15px;
 	margin: 0;
-	padding: 15px;
 }
 </style>

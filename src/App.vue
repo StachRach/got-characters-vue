@@ -40,9 +40,9 @@ onBeforeMount(() => {
   <div class="mother">
     <Popular />
 	  <div class="child">
-	  <List class="component" :characters=characters :favList=false />
-	  <List class="component" :characters=characters :favList=true />
-  </div>
+	    <List class="component" :characters=characters :favList=false />
+	    <List class="component" :characters=characters :favList=true />
+    </div>
   </div>
   <Footer />
 </template>
@@ -60,6 +60,7 @@ onBeforeMount(() => {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+	width: 55%;
 }
 
 .component {
