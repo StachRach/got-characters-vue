@@ -38,7 +38,7 @@ onBeforeMount(() => {
 <template>
   <Header />
   <div class="mother">
-    <Popular />
+    <Popular :characters=characters />
 	  <div class="child">
 	    <List class="component" :characters=characters :favList=false />
 	    <List class="component" :characters=characters :favList=true />
@@ -53,6 +53,7 @@ onBeforeMount(() => {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+	margin-bottom: 30px;
 }
 
 .child {

@@ -1,51 +1,31 @@
 <script setup lang="ts">
-import Image from "../assets/square.png";
 import PopularItem from "./PopularItem.vue";
-// import { ref } from "vue";
 
-interface Character {
-  id: number;
-  name: string;
-  imageUrl: string;
-  films: string[];
-  tvShows: string[];
-}
+import {Person} from "../interfaces/Person.ts";
 
-const data: Character[] = [
-  {
-    id: 1,
-    name: "Jon Snow",
-    imageUrl: Image,
-    films: ["a", "b", "c"],
-    tvShows: ["d", "e", "f"],
-  },
-  {
-    id: 2,
-    name: "Arya Stark",
-    imageUrl: Image,
-    films: ["a", "b", "c"],
-    tvShows: ["d", "e", "f"],
-  },
-  {
-    id: 3,
-    name: "Cersei Lannister",
-    imageUrl: Image,
-    films: ["a", "b", "c"],
-    tvShows: ["d", "e", "f"],
-  },
-]
+const props = defineProps<{
+	characters: Person[];
+}>();
 
-// const characters = ref(data)
+const king = props.characters
+	.filter((c: Person) => c.title.toLowerCase().includes("king"))
+	.splice(0, 1);
+const queen = props.characters
+	.filter((c: Person) => c.title.toLowerCase().includes("queen"))
+	.splice(1, 1);
+const royalties = [...king, ...queen]
+
 </script>
 
 <template>
   <div class="box">
-    <div v-for="c in data">
+    <div v-for="c in royalties">
       <PopularItem
-          :films=c.films
-          :tv-shows=c.tvShows
-          :image-url=c.imageUrl
-          :name=c.name
+	      class="component"
+	      :image-url=c.imageUrl
+	      :name=c.fullName
+	      :title=c.title
+	      :house=c.family
       />
     </div>
   </div>
@@ -54,8 +34,11 @@ const data: Character[] = [
 <style scoped>
 .box {
   display: flex;
-  margin-top: 15px;
-  margin-bottom: 30px;
+	margin: 15px 30px 30px 30px;
   justify-content: center;
+}
+
+.component {
+	margin: 0 20px;
 }
 </style>

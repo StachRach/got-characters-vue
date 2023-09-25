@@ -2,8 +2,8 @@
 defineProps<{
   name: string;
   imageUrl: string;
-  films: string[];
-  tvShows: string[];
+	title: string;
+	house: string;
 }>();
 </script>
 
@@ -11,8 +11,8 @@ defineProps<{
   <div class="popular-item">
     <img :src=imageUrl :alt=name width="290" height="290"/>
     <p class="name-fav">{{ name }}</p>
-    <p>Films: <span>{{ films.length }}</span></p>
-    <p>TV series: <span>{{ tvShows.length }}</span></p>
+    <p>Title: <span>{{ title }}</span></p>
+    <p>House: <span>{{ house }}</span></p>
   </div>
 </template>
 
