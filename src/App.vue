@@ -61,7 +61,7 @@ onBeforeMount(() => {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-	width: 80%;
+	width: 60%;
 }
 
 .component {

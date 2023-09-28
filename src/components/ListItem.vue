@@ -31,7 +31,9 @@ const emit = defineEmits<{
 					|| title.toLowerCase().includes('lord')"
 				class="crown"
 				:src="Crown"
-				alt="crown"/>
+				alt="crown"
+			/>
+			<span class="hide">{{ title }}</span>
 		</p>
 		<button @click="handleClick">
       <img
@@ -55,6 +57,19 @@ button {
 .crown {
 	width: 15px;
 	height: 15px;
+}
+
+.hide {
+	display: none;
+}
+
+.crown:hover + .hide {
+	display: block;
+	position: absolute;
+	background-color: #36013f;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
 }
 
 .star {
