@@ -11,13 +11,13 @@ defineProps<{
 
 <template>
 	<div class="block">
-		<h3>{{ !favList ? "Game of Thrones Characters" : "Favorites Characters" }}</h3>
-		<ul>
+		<h3>{{ !favList ? "Game of Thrones" : "Favorites Characters" }}</h3>
+		<ul class="ul-list">
 			<li>
 				<div class="block-child">
-					<span>Picture</span>
-					<span>Character Name</span>
-					<span>Favorites</span>
+					<p>Picture</p>
+					<p>Character Name</p>
+					<p>Favorites</p>
 				</div>
 			</li>
 			<ListItem
@@ -45,8 +45,7 @@ defineProps<{
 	border-radius: 10px;
 	border-color: rgba(0, 0, 0, 0.2);
 	color: #36013f;
-	width: 60%;
-	padding-right: 30px;
+	width: 80%;
 	margin-bottom: 30px;
 }
 
@@ -60,12 +59,16 @@ defineProps<{
 	padding: 15px;
 }
 
+.ul-list {
+	padding-inline-start: 0;
+}
+
 .block-child {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	padding-right: 30px;
+	align-content: stretch;
 }
 
 .block-child p {
