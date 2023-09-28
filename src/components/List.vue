@@ -11,7 +11,7 @@ defineProps<{
 
 <template>
 	<div class="block">
-		<h3>{{ !favList ? "Game of Thrones" : "Favorites Characters" }}</h3>
+		<h3>{{ !favList ? "Game of Thrones Characters" : "Favorites Characters" }}</h3>
 		<ul class="ul-list">
 			<li>
 				<div class="block-child">
@@ -25,6 +25,7 @@ defineProps<{
 				:key=c.id
 				:image-url=c.imageUrl
 				:fullName=c.fullName
+				:title=c.title
 				:family=c.family
 				:favList=favList
 				:favorite=c.favorite
@@ -72,7 +73,7 @@ defineProps<{
 }
 
 .block-child p {
-	font-size: 15px;
+	font-size: 16px;
 	margin: 0;
 }
 </style>

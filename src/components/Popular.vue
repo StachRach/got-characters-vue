@@ -39,7 +39,6 @@ onBeforeUpdate(() => {
 <style scoped>
 .box {
   display: flex;
-	//margin: 15px 30px 30px 30px;
   justify-content: center;
 }
 
