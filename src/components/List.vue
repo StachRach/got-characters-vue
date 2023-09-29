@@ -1,17 +1,31 @@
 <script setup lang="ts">
 import ListItem from "./ListItem.vue";
+import Search from "./Search.vue";
 
 import {Person} from "../interfaces/Person.ts";
+import { ref, Ref} from "vue";
 
-defineProps<{
+const props = defineProps<{
 	favList: boolean;
 	characters: Person[];
 }>();
+
+let data: Ref<Person[]> = ref(props.characters);
+
+const handleSearch = (input: string) => {
+	if (props.favList) {
+		data.value = props.characters.filter((c: Person) => c.fullName.toLowerCase().includes(input.toLowerCase()));
+	}
+}
 </script>
 
 <template>
 	<div class="block">
 		<h3>{{ !favList ? "Game of Thrones Characters" : "Favorites Characters" }}</h3>
+		<Search
+			v-if="favList"
+			@search="(value: string) => handleSearch(value)"
+		/>
 		<ul class="ul-list">
 			<li>
 				<div class="block-child">
@@ -21,7 +35,7 @@ defineProps<{
 				</div>
 			</li>
 			<ListItem
-				v-for="c in characters"
+				v-for="c in data"
 				:key=c.id
 				:image-url=c.imageUrl
 				:fullName=c.fullName

@@ -35,25 +35,16 @@ const emit = defineEmits<{
 			/>
 			<span class="hide">{{ title }}</span>
 		</p>
-		<button @click="handleClick">
-      <img
-	      :src="!favorite ? EmptyStar : Star"
-	      :alt="!favorite ? 'Favorite' : 'Unfovorite'"
-	      class="star"
-      />
-    </button>
+		<img
+			:src="!favorite ? EmptyStar : Star"
+			:alt="!favorite ? 'Favorite' : 'Unfovorite'"
+			class="star"
+			@click="handleClick"
+		/>
 	</li>
 </template>
 
 <style scoped>
-button {
-  border: none;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-	background-color: inherit;
-}
-
 .crown {
 	width: 15px;
 	height: 15px;
@@ -75,13 +66,19 @@ button {
 .star {
 	width: 35px;
 	height: 35px;
+	padding: 15px;
+}
+
+.star:hover {
+	cursor: pointer;
 }
 
 .block-child {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: flex-start;
+	align-content: center;
+	justify-content: space-evenly;
 }
 
 .block-child p {

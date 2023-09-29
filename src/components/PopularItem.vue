@@ -28,7 +28,7 @@ defineProps<{
 }
 
 .popular-item img {
-  border-radius: 20px;
+  border-radius: 20% 5%;
   box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
 }
 

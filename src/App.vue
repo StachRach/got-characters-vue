@@ -29,7 +29,7 @@ onBeforeMount(() => {
 			});
 			characters.value = temp;
 			
-			console.log(characters.value);
+			console.table(characters.value);
 		})
 		.catch((error) => console.error(error));
 })
