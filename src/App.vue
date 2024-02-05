@@ -39,9 +39,9 @@ onBeforeMount(() => {
   <Header />
   <div class="mother">
     <Popular :characters=characters />
-	  <div class="child">
-	    <List class="component" :characters=characters :favList=false />
-	    <List class="component" :characters=characters :favList=true />
+    <div class="child">
+      <List class="component" :characters=characters :favList=false />
+      <List class="component" :characters=characters :favList=true />
     </div>
   </div>
   <Footer />
