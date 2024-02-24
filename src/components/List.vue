@@ -3,14 +3,14 @@ import ListItem from "./ListItem.vue";
 import Search from "./Search.vue";
 
 import {Person} from "../interfaces/Person.ts";
-import { ref, Ref} from "vue";
+import {Ref, toRef} from "vue";
 
 const props = defineProps<{
 	favList: boolean;
 	characters: Person[];
 }>();
 
-let data: Ref<Person[]> = ref(props.characters);
+let data: Ref<Person[]> = toRef(props.characters);
 
 const handleSearch = (input: string) => {
 	if (props.favList) {
