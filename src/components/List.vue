@@ -3,14 +3,25 @@ import ListItem from "./ListItem.vue";
 import Search from "./Search.vue";
 
 import {Person} from "../interfaces/Person.ts";
-import {Ref, toRef} from "vue";
-
+import {Ref, ref, defineProps, toRef, onMounted} from "vue";
 const props = defineProps<{
 	favList: boolean;
 	characters: Person[];
 }>();
 
-let data: Ref<Person[]> = toRef(props.characters);
+let data: Ref<Person[]>
+let isData: Ref<Boolean> = ref(false)
+
+onMounted(() => {
+	const inter = setInterval(() => {
+		data = toRef(props.characters);
+
+		if (data.value.length > 0) {
+			isData.value = true
+			clearInterval(inter);
+		}
+	}, 100)
+});
 
 const handleSearch = (input: string) => {
 	if (props.favList) {
@@ -20,33 +31,40 @@ const handleSearch = (input: string) => {
 </script>
 
 <template>
-	<div class="block">
-		<h3>{{ !favList ? "Game of Thrones Characters" : "Favorites Characters" }}</h3>
-		<Search
-			v-if="favList"
-			@search="(value: string) => handleSearch(value)"
-		/>
-		<ul class="ul-list">
-			<li>
-				<div class="block-child">
-					<p>Picture</p>
-					<p>Character Name</p>
-					<p>Favorites</p>
-				</div>
-			</li>
-			<ListItem
-				v-for="c in data"
-				:key=c.id
-				:image-url=c.imageUrl
-				:fullName=c.fullName
-				:title=c.title
-				:family=c.family
-				:favList=favList
-				:favorite=c.favorite
-				@btnClick="(value: boolean) => c.favorite = value"
+	<template v-if="isData">
+		<div class="block">
+			<h3>{{ !favList ? "Game of Thrones Characters" : "Favorites Characters" }}</h3>
+			<Search
+				v-if="favList"
+				@search="(value: string) => handleSearch(value)"
 			/>
-		</ul>
-	</div>
+			<ul class="ul-list">
+				<li>
+					<div class="block-child">
+						<p>Picture</p>
+						<p>Character Name</p>
+						<p>Favorites</p>
+					</div>
+				</li>
+				<ListItem
+					v-for="c in data"
+					:key=c.id
+					:image-url=c.imageUrl
+					:fullName=c.fullName
+					:title=c.title
+					:family=c.family
+					:favList=favList
+					:favorite=c.favorite
+					@btnClick="(value: boolean) => c.favorite = value"
+				/>
+			</ul>
+		</div>
+	</template>
+	<template v-else>
+		<div class="block">
+			<h3>Loading characters...</h3>
+		</div>
+	</template>
 </template>
 
 <style scoped>
